@@ -1,0 +1,68 @@
+*{
+    margin: 0rem;
+    padding: 0rem;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+}
+
+.container{
+    text-align: center;
+}
+
+h1{
+    font-size: 2.5rem;
+    margin: 3rem auto 2rem auto;
+}
+
+#profit{
+    font-size: 3rem;
+    color: greenyellow;
+    -webkit-text-stroke: 2px black;
+}
+
+#loss{
+    font-size: 3rem;
+    color: red;
+    -webkit-text-stroke: 2px black;
+}
+
+.label-input{
+   margin: 1rem;
+
+}
+
+.label-input label{
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.label-input input{
+    width: 22%;
+    padding: .5rem;
+    margin: .5rem;
+    border-radius: 20px;
+    border: 3px solid black;
+    outline: none;
+}
+
+.btn-calculate{
+    padding: .3rem 1rem;
+    border-radius: 20px;
+    outline: none;
+    border: 2px solid #5F939A;
+    background-color: rgb(224, 255, 204);
+    cursor: pointer;
+}
+
+.btn-calculate:hover{
+    box-shadow: rgba(0, 0, 0, 0.452) 0px 6px 5px;
+    transition: .2s;
+}
+
+.btn-calculate:active{
+    box-shadow: rgba(0, 0, 0, 0.274) 0px 3px 5px;
+}
+
+.span-remark-1,.span-remark-2{
+    font-size: 1.8rem;
+}

@@ -16,7 +16,6 @@ const companySymbols = {
 
 const clickHandler = () => {
     let stock = checkSymbolExists();
-    alert(stock);
     const URL = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${stock}.BSE&outputsize=full&apikey=S6GRGMO2EDYWVE0J`;
     console.log(URL)
     let date = stockDate.value;
@@ -60,13 +59,15 @@ function profitHandler(profit,costPrice){
     profitPercent = Math.trunc(((profit/costPrice)*100)*100)/100;
     remarkAbsoluteValue.textContent = `Yay ! You made a profit of ${profit} ₹`;
     remarkPercentageValue.textContent = `You booked a profit of ${profitPercent}%. Are you Harshad Mehta of 2021 ? 🤨`
+    document.body.style.backgroundColor = "#9EDE73";
 }
 
 function lossHandler(loss,costPrice){
     loss = Math.trunc(Math.abs(loss)*100)/100;
     lossPercent = Math.trunc(((loss/costPrice)*100)*100)/100;
     remarkAbsoluteValue.textContent = `Oh oo ! You suffered a loss of ${loss} ₹`;
-    remarkPercentageValue.textContent = `You got a loss of ${lossPercent}%. 🤕`
+    remarkPercentageValue.textContent = `You lost almost ${lossPercent}%. 🤕`
+    document.body.style.backgroundColor = "#F05945";
 }
 
 
