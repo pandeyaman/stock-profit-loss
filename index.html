@@ -13,7 +13,14 @@
         <label for="stock-name">
             Name of the Stock
         </label>
-        <input type="text" name="" id="stock-name">
+        <input type="text" name="" id="stock-name" list="companies">
+        <datalist id="companies">
+            <option value="TCS">
+            <option value="Kotak Mahindra Bank">
+            <option value="Tata Consumer Products Ltd">
+            <option value="ITC">
+            <option value="Nestle India Limited">
+          </datalist>
     </div>
     <div>
         <label for="stock-date">Date of Purchase</label>
@@ -27,11 +34,16 @@
     </div>
     <div>
         <label for="current-price">
-            Last Traded Price
+            Current Price
         </label>
         <input type="text" name="" id="current-price">
     </div>
     <button class="btn-calculate">Calculate</button>
+    <div>
+        <span class="span-remark-1"></span>
+        <br>
+        <span class="span-remark-2"></span>
+    </div>
 </body>
 <script src="/script.js"></script>
 </html>
