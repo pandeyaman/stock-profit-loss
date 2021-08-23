@@ -13,42 +13,47 @@
 <body>
     <div class="container">
         <h1>Stocks <span id="profit">Profit</span> & <span id="loss">Loss</span> Calculator</h1>
-    <div class="label-input">
-        <label for="stock-name">
-            Name of the Stock
-        </label>
-        <br>
-        <input type="text" name="" id="stock-name" list="companies" placeholder="Choose from below list or use BSE Symbols">
-        <datalist id="companies">
-            <option value="TCS">
-            <option value="Kotak Mahindra Bank">
-            <option value="Tata Consumer Products Ltd">
-            <option value="ITC">
-            <option value="Nestle India Limited">
-          </datalist>
-    </div>
-    <div class="label-input">
-        <label for="stock-date">Date of Purchase</label><br>
-        <input type="date" name="" id="stock-date">
-    </div>
-    <div class="label-input">
-        <label for="stock-quantity">
-            Quantity
-        </label><br>
-        <input type="number" name="" id="stock-quantity">
-    </div>
-    <div class="label-input">
-        <label for="current-price">
-            Current Price
-        </label><br>
-        <input type="text" name="" id="current-price">
-    </div>
-    <button class="btn-calculate">Calculate</button>
-    <div class="label-input">
-        <span class="span-remark-1"></span>
-        <br>
-        <span class="span-remark-2"></span>
-    </div>
+        <form id="input-form">
+            <div class="label-input">
+                <label for="stock-name">
+                    Name of the Stock
+                </label>
+                <br>
+                <input type="text" name="" id="stock-name" list="companies" placeholder="Choose from below list or use BSE Symbols" required>
+                <datalist id="companies">
+                    <option value="TCS">
+                    <option value="Kotak Mahindra Bank">
+                    <option value="Tata Consumer Products Ltd">
+                    <option value="ITC">
+                    <option value="Nestle India Limited">
+                  </datalist>
+            </div>
+            <div class="label-input">
+                <label for="stock-date">Date of Purchase</label><br>
+                <input type="date" name="" id="stock-date" placeholder="Enter only weekdays" required>
+            </div>
+            <div class="label-input">
+                <label for="stock-quantity">
+                    Quantity
+                </label><br>
+                <input type="number" name="" id="stock-quantity" required>
+            </div>
+            <div class="label-input">
+                <label for="current-price">
+                    Current Price
+                </label><br>
+                <input type="text" name="" id="current-price" required>
+            </div>
+            <button class="btn-calculate">Calculate</button>
+            <div class="label-input">
+                <span class="span-remark-1"></span>
+                <br>
+                <span class="span-remark-2"></span>
+            </div>
+        </form>
+    
+    
+        
     </div>
 </body>
 <script src="/script.js"></script>

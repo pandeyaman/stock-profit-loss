@@ -14,11 +14,13 @@ const companySymbols = {
      "Nestle India Limited" : "NESTLEIND"
 }
 
-const clickHandler = () => {
+const clickHandler = (e) => {
+    e.preventDefault();
     let stock = checkSymbolExists();
     const URL = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${stock}.BSE&outputsize=full&apikey=S6GRGMO2EDYWVE0J`;
     console.log(URL)
     let date = stockDate.value;
+    let isDateValid = validateDate(date);
     fetch(URL).then(response => response.json()).then(data => {
         console.log(data["Time Series (Daily)"])
         let timeSeries = data["Time Series (Daily)"][date]["4. close"];
@@ -28,6 +30,14 @@ const clickHandler = () => {
         calculateProfitLoss(totalCostPrice,timeSeries);
     })
 } 
+
+
+function validateDate(date){
+    let systemDate = new Date();
+    if(systemDate.getFullYear < date.getFullYear){
+        
+    }
+}
 
 
 function checkSymbolExists(){
@@ -73,5 +83,5 @@ function lossHandler(loss,costPrice){
 
 
 btnCalculate.addEventListener('click', () => {
-    clickHandler();
+    clickHandler(event);
 })
