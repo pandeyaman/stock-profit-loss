@@ -10,7 +10,7 @@ const img = document.querySelector(".img-GIF");
 
 const companySymbols = {
      "TCS" : "TCS",
-     "Kotak Mahindra Bank" : "KOTAKBANK",
+     "Zee Entertainment Enterprises" : "ZEEL",
      "Tata Consumer Products Ltd" : "TATACONSUM",
      "ITC" : "ITC",
      "Nestle India Limited" : "NESTLEIND"
@@ -18,33 +18,47 @@ const companySymbols = {
 
 const clickHandler = (e) => {
     e.preventDefault();
-    img.style.display = "block";
+    remarkAbsoluteValue.style.display = "none";
+    remarkPercentageValue.style.display = "none";
     let stock = checkSymbolExists();
     const URL = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${stock}.BSE&outputsize=full&apikey=S6GRGMO2EDYWVE0J`;
     console.log(URL)
     let date = stockDate.value;
     let isDateValid = validateDate(date);
-    fetch(URL).then(response => response.json()).then(data => {
-        console.log(data["Time Series (Daily)"])
-        let timeSeries = data["Time Series (Daily)"][date]["4. close"];
-        totalCostPrice = timeSeries * stockQuantity.value;
-        setTimeout(()=>{
-            img.style.display = "none";
-            remarkPercentageValue.style.display = "block";
-            remarkAbsoluteValue.style.display = "block";
-            calculateProfitLoss(totalCostPrice,timeSeries);
-        },2000);
-        
-        
-    })
+    if(isDateValid){
+        img.style.display = "block";
+        fetch(URL).then(response => response.json()).then(data => {
+            console.log(data["Time Series (Daily)"])
+            let timeSeries = data["Time Series (Daily)"][date]["4. close"];
+            totalCostPrice = timeSeries * stockQuantity.value;
+            setTimeout(()=>{
+                img.style.display = "none";
+                remarkPercentageValue.style.display = "block";
+                remarkAbsoluteValue.style.display = "block";
+                calculateProfitLoss(totalCostPrice,timeSeries);
+            },2000);
+            
+            
+        })
+    }
+    else{
+        remarkPercentageValue.style.display = "block";
+        remarkPercentageValue.textContent = "BSE is closed on SATURDAYS and SUNDAYS, choose a date on a weekday"
+    }
+    
 } 
 
 
 function validateDate(date){
-    let systemDate = new Date();
-    if(systemDate.getFullYear < date.getFullYear){
-
+    let dateFormatted = new Date(date);
+    let day = dateFormatted.getDay();
+    if(day == 6 || day == 0){
+        return false;
     }
+    else{
+        return true;
+    }
+    
 }
 
 
