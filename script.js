@@ -5,6 +5,8 @@ const stockQuantity = document.getElementById("stock-quantity");
 const lastTradedPrice = document.getElementById('current-price');
 const remarkAbsoluteValue = document.querySelector(".span-remark-1");
 const remarkPercentageValue = document.querySelector(".span-remark-2");
+const formInput = document.getElementById("input-form");
+const img = document.querySelector(".img-GIF");
 
 const companySymbols = {
      "TCS" : "TCS",
@@ -16,6 +18,7 @@ const companySymbols = {
 
 const clickHandler = (e) => {
     e.preventDefault();
+    img.style.display = "block";
     let stock = checkSymbolExists();
     const URL = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${stock}.BSE&outputsize=full&apikey=S6GRGMO2EDYWVE0J`;
     console.log(URL)
@@ -24,10 +27,15 @@ const clickHandler = (e) => {
     fetch(URL).then(response => response.json()).then(data => {
         console.log(data["Time Series (Daily)"])
         let timeSeries = data["Time Series (Daily)"][date]["4. close"];
-        console.log(timeSeries  );
         totalCostPrice = timeSeries * stockQuantity.value;
-        console.log(totalCostPrice);
-        calculateProfitLoss(totalCostPrice,timeSeries);
+        setTimeout(()=>{
+            img.style.display = "none";
+            remarkPercentageValue.style.display = "block";
+            remarkAbsoluteValue.style.display = "block";
+            calculateProfitLoss(totalCostPrice,timeSeries);
+        },2000);
+        
+        
     })
 } 
 
@@ -35,7 +43,7 @@ const clickHandler = (e) => {
 function validateDate(date){
     let systemDate = new Date();
     if(systemDate.getFullYear < date.getFullYear){
-        
+
     }
 }
 
@@ -82,6 +90,6 @@ function lossHandler(loss,costPrice){
 
 
 
-btnCalculate.addEventListener('click', () => {
-    clickHandler(event);
+formInput.addEventListener('submit', (event) => {
+        clickHandler(event);  
 })

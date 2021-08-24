@@ -11,7 +11,7 @@
 
 h1{
     font-size: 2.5rem;
-    margin: 3rem auto 2rem auto;
+    margin: 2rem auto 2rem auto;
 }
 
 #profit{
@@ -65,4 +65,10 @@ h1{
 
 .span-remark-1,.span-remark-2{
     font-size: 1.8rem;
+}
+
+img{
+    width: 250px;
+    border: 4px solid black;
+    margin: 1rem auto;
 }
